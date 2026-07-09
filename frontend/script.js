@@ -102,7 +102,7 @@ async function uploadDocument() {
 
         documentInput.disabled = true;
         removeFile.disabled = true;
-        const response = await fetch("http://localhost:3000/upload", {
+        const response = await fetch("http://localhost:5000/upload", {
 
             method: "POST",
 
@@ -121,21 +121,15 @@ async function uploadDocument() {
         documentInput.disabled = false;
         removeFile.disabled = false; 
 
-        console.log("Before response.json");
 
 const result = await response.json();
-
-console.log("After response.json");
-
-console.log(result);
 
 updateStatus("Document ready.");
 
 questionSection.classList.remove("hidden");
 
-console.log("Question section shown");
 
-    }
+}
 
     catch (error) {
 
@@ -178,7 +172,7 @@ questionForm.addEventListener("submit", async (event) => {
 
     try {
 
-        const response = await fetch("http://localhost:3000/ask", {
+        const response = await fetch("http://localhost:5000/ask", {
 
             method: "POST",
 
