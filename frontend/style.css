@@ -1,0 +1,260 @@
+:root {
+    --background: #f6f7f9;
+    --surface: #ffffff;
+    --border: #d9dde3;
+
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+
+    --success: #15803d;
+    --error: #dc2626;
+
+    --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+
+    --radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.container {
+    width: min(900px, 92%);
+    margin: 48px auto;
+}
+
+.page-header {
+    margin-bottom: 32px;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: var(--text-secondary);
+    max-width: 650px;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+}
+
+.card h2 {
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+}
+
+#file{
+    display: block;
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--radius);
+    padding: 48px 24px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    background: #fafafa;
+}
+
+#file:hover {
+    border-color: var(--accent);
+    background: #f8fbff;
+}
+
+
+.file-content {
+    text-align: center;
+}
+
+.file-content {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.file-subtitle {
+    display: block;
+    margin-top: 6px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.file-info {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.text-button {
+    border: none;
+    background: none;
+    color: var(--error);
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.text-button:hover {
+    text-decoration: underline;
+}
+
+
+#processingStatus{
+    margin-top: 8px;
+    color: var(--text-secondary);
+}
+
+.processing-header span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+
+#questionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.primary-button {
+    align-self: flex-end;
+
+    padding: 12px 24px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: var(--accent);
+    color: white;
+
+    font-size: 0.95rem;
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+.primary-button:hover:not(:disabled) {
+    background: var(--accent-hover);
+}
+
+.primary-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 24px;
+}
+
+.spinner {
+    width: 22px;
+    height: 22px;
+
+    border: 3px solid #dbe3ec;
+    border-top-color: var(--accent);
+
+    border-radius: 50%;
+
+    animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.answer-box {
+    white-space: pre-wrap;
+    line-height: 1.7;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafafa;
+    padding: 18px;
+    min-height: 120px;
+}
+
+.message {
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.error {
+    background: #fef2f2;
+    color: var(--error);
+    border: 1px solid #fecaca;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+@media (max-width: 700px) {
+
+    .container {
+        margin: 28px auto;
+    }
+
+    .page-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .drop-zone {
+        padding: 36px 20px;
+    }
+
+    .processing-header,
+    .file-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .primary-button {
+        width: 100%;
+    }
+}
