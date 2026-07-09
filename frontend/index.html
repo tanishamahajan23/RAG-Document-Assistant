@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Document Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header class="page-header">
+            <h1>Document Assistant</h1>
+            <p>
+                Upload a PDF or text document, then ask questions based on its contents.
+            </p>
+        </header>
+
+
+        <section class="card">
+
+            <h2>Upload Document</h2>
+
+            <div id="uploadForm">
+
+                <label id="file">
+
+                    <input
+                        type="file"
+                        id="documentInput"
+                        accept=".pdf,.txt"
+                        hidden
+                    >
+
+                    <div class="file-content">
+
+                        <span class="file-title">
+                            Click to add a file here
+                        </span>
+
+
+                    </div>
+
+                </label>
+
+            </div>
+
+            <div id="selectedFile" class="file-info hidden">
+
+                <span id="fileName"></span>
+
+                <button
+                    id="removeFile"
+                    type="button"z
+                    class="text-button"
+                >
+                    Remove
+                </button>
+
+            </div>
+
+        </section>
+
+        <section
+            id="processingSection"
+            class="card hidden"
+        >
+
+            <div class="processing-header">
+
+                <h2>Processing Document</h2>
+
+                <span id="processingStatus">
+                    Reading document...
+                </span>
+
+            </div>
+
+
+        </section>
+
+        <section
+            id="questionSection"
+            class="card hidden"
+        >
+
+            <h2>Ask a Question</h2>
+
+            <form id="questionForm">
+
+                <textarea
+                    id="questionInput"
+                    rows="4"
+                    placeholder="Ask something about the uploaded document..."
+                    required
+                ></textarea>
+
+                <button
+                    id="askButton"
+                    type="submit"
+                    class="primary-button"
+                >
+                    Ask
+                </button>
+
+            </form>
+
+        </section>
+
+        <section
+            id="loadingSection"
+            class="loading hidden"
+        >
+
+            <div class="spinner"></div>
+
+            <p>Generating answer...</p>
+
+        </section>
+
+        <section
+            id="answerSection"
+            class="card hidden"
+        >
+
+            <div class="answer-header">
+
+                <h2>Answer</h2>
+
+            </div>
+
+            <div id="answerBox" class="answer-box">
+
+            </div>
+
+        </section>
+
+        <section
+            id="errorSection"
+            class="message error hidden"
+        >
+            <p id="errorMessage"></p>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
