@@ -2,7 +2,8 @@ import express from "express";
 import multer from "multer";
 
 import extractText from "../services/pdfService.js";
-import splitIntoChunks from "../services/chunkService.js";
+import splitText from "../services/textSplitter.js";
+import generateEmbeddings from "../services/embeddingService.js";
 
 const router = express.Router();
 
@@ -43,11 +44,12 @@ router.post(
             console.log(req.file);
 
             const text = await extractText(req.file.path);
-            const chunks = splitIntoChunks(text);
-
-            console.log(chunks);
+            const documents = await splitText(text);
+            const embedding = await generateEmbeddings(documents);
 
             console.log(text);
+
+            console.log(embedding);
 
             res.status(200).json({
 

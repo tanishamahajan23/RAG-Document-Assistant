@@ -63,7 +63,6 @@ removeFile.addEventListener("click", () => {
     resetApplication();
 
 });
-
 documentInput.addEventListener("change", (event) => {
 
     hideError();
@@ -102,15 +101,17 @@ async function uploadDocument() {
 
         documentInput.disabled = true;
         removeFile.disabled = true;
-        const response = await fetch("http://localhost:5000/upload", {
+        console.log("Uploading document...");
+        // const response = await fetch("http://localhost:5000/upload", {
 
-            method: "POST",
+        //     method: "POST",
 
-            body: formData
+        //     body: formData
 
-        });
+        // });
 
         updateStatus("Processing document...");
+        console.log(hello);
 
         if (!response.ok) {
 
