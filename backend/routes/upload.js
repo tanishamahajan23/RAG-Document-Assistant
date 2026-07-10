@@ -51,7 +51,7 @@ router.post(
 
             console.log(embedding);
 
-            res.status(200).json({
+             res.status(200).json({
 
                 success: true,
 
@@ -59,13 +59,14 @@ router.post(
 
             });
 
+            console.log("Document uploaded successfully.");
         }
 
         catch (error) {
 
             console.error(error);
 
-            res.status(500).json({
+            res.sendstatus(500).json({
 
                 success: false,
 

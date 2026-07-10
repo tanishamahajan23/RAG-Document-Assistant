@@ -1,6 +1,7 @@
 console.log("SCRIPT LOADED");
 const uploadForm = document.getElementById("uploadForm");
 const documentInput = document.getElementById("documentInput");
+const uploadButton = document.getElementById("uploadButton");
 
 const selectedFile = document.getElementById("selectedFile");
 const fileName = document.getElementById("fileName");
@@ -52,6 +53,8 @@ function displaySelectedFile(file) {
 
     uploadedFile = file;
 
+    console.log("Selected file:", uploadedFile);
+
     fileName.textContent = file.name;
 
     selectedFile.classList.remove("hidden");
@@ -75,12 +78,11 @@ documentInput.addEventListener("change", (event) => {
 
     displaySelectedFile(file);
 
-    uploadDocument();
-
 });
 
-async function uploadDocument() {
 
+uploadButton.addEventListener("click", async (event)=>{
+    event.preventDefault();
     if (!uploadedFile) {
 
         return;
@@ -102,16 +104,18 @@ async function uploadDocument() {
         documentInput.disabled = true;
         removeFile.disabled = true;
         console.log("Uploading document...");
-        // const response = await fetch("http://localhost:5000/upload", {
+        const response = await fetch("http://localhost:5000/upload", {
 
-        //     method: "POST",
+            method: "POST",
 
-        //     body: formData
+            body: formData
 
-        // });
+        });
+
+        console.log(response);
 
         updateStatus("Processing document...");
-        console.log(hello);
+        console.log("Document processing...");
 
         if (!response.ok) {
 
@@ -129,8 +133,12 @@ updateStatus("Document ready.");
 
 questionSection.classList.remove("hidden");
 
+res.sendStatus(200).json({
 
-}
+    success: true
+
+
+})
 
     catch (error) {
 
@@ -143,7 +151,7 @@ questionSection.classList.remove("hidden");
 
     }
 
-}
+})
 
 questionForm.addEventListener("submit", async (event) => {
 
