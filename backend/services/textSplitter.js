@@ -12,7 +12,7 @@ async function splitText(text) {
 
     const documents = await splitter.createDocuments([text]);
 
-    console.log(documents);
+    // console.log(documents);
 
     return documents;
 

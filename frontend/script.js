@@ -83,6 +83,7 @@ documentInput.addEventListener("change", (event) => {
 
 uploadButton.addEventListener("click", async (event)=>{
     event.preventDefault();
+
     if (!uploadedFile) {
 
         return;
@@ -133,12 +134,7 @@ updateStatus("Document ready.");
 
 questionSection.classList.remove("hidden");
 
-res.sendStatus(200).json({
-
-    success: true
-
-
-})
+}
 
     catch (error) {
 

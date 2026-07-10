@@ -4,6 +4,7 @@ import multer from "multer";
 import extractText from "../services/pdfService.js";
 import splitText from "../services/textSplitter.js";
 import generateEmbeddings from "../services/embeddingService.js";
+import storeVectors from "../config/pinecone.js";
 
 const router = express.Router();
 
@@ -46,10 +47,7 @@ router.post(
             const text = await extractText(req.file.path);
             const documents = await splitText(text);
             const embedding = await generateEmbeddings(documents);
-
-            console.log(text);
-
-            console.log(embedding);
+            const vector = await storeVectors(embedding, documents,req.file.originalname);
 
              res.status(200).json({
 
@@ -66,7 +64,7 @@ router.post(
 
             console.error(error);
 
-            res.sendstatus(500).json({
+            res.status(500).json({
 
                 success: false,
 
