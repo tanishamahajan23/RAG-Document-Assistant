@@ -105,7 +105,7 @@ uploadButton.addEventListener("click", async (event)=>{
         documentInput.disabled = true;
         removeFile.disabled = true;
         console.log("Uploading document...");
-        const response = await fetch("http://localhost:5000/upload", {
+        const response = await fetch("https://rag-document-assistant-46pw.onrender.com/upload", {
 
             method: "POST",
 
@@ -174,14 +174,14 @@ askButton.addEventListener("click", async (event) => {
 
     askButton.disabled = false;
 
-    // return;
+    return;
 
    }
 
     try {
         console.log("Sending question:", question);
 
-        const response = await fetch("http://localhost:5000/ask", {
+        const response = await fetch("https://rag-document-assistant-46pw.onrender.com/ask", {
 
             method: "POST",
 
