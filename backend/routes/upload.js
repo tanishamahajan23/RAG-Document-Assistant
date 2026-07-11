@@ -1,5 +1,6 @@
 import express from "express";
 import multer from "multer";
+import fs from "fs/promises";
 
 import extractText from "../services/pdfService.js";
 import splitText from "../services/textSplitter.js";
@@ -48,6 +49,8 @@ router.post(
             const documents = await splitText(text);
             const embedding = await generateEmbeddings(documents);
             const vector = await storeVectors(embedding, documents,req.file.originalname);
+
+            await fs.unlink(req.file.path);
 
              res.status(200).json({
 

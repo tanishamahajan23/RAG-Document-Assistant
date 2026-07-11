@@ -118,18 +118,19 @@ uploadButton.addEventListener("click", async (event)=>{
         updateStatus("Processing document...");
         console.log("Document processing...");
 
-        if (!response.ok) {
+        // if (!response.ok) {
 
-            throw new Error("Failed to process document.");
+        //     throw new Error("Failed to process document.");
 
-        }
+        // }
 
         documentInput.disabled = false;
         removeFile.disabled = false; 
 
         console.log("Document processed successfully.");
 
-const result = await response.json();
+const result = await response.text();
+console.log("Response from server:", result);
 
 updateStatus("Document ready.");
 console.log("Document ready for questions.");
