@@ -105,7 +105,7 @@ uploadButton.addEventListener("click", async (event)=>{
         documentInput.disabled = true;
         removeFile.disabled = true;
         console.log("Uploading document...");
-        const response = await fetch("http://localhost:5000/upload", {
+        const response = await fetch("https://rag-document-assistant-46pw.onrender.com/upload", {
 
             method: "POST",
 
@@ -118,11 +118,11 @@ uploadButton.addEventListener("click", async (event)=>{
         updateStatus("Processing document...");
         console.log("Document processing...");
 
-        // if (!response.ok) {
+        if (!response.ok) {
 
-        //     throw new Error("Failed to process document.");
+            throw new Error("Failed to process document.");
 
-        // }
+        }
 
         documentInput.disabled = false;
         removeFile.disabled = false; 
@@ -182,7 +182,7 @@ askButton.addEventListener("click", async (event) => {
     try {
         console.log("Sending question:", question);
 
-        const response = await fetch("http://localhost:5000/ask", {
+        const response = await fetch("https://rag-document-assistant-46pw.onrender.com/ask", {
 
             method: "POST",
 
@@ -218,7 +218,7 @@ askButton.addEventListener("click", async (event) => {
 
         console.log("Answer received:", data.answer);
 
-        answerBox.value = data.answer;
+        answerBox.textContent = data.answer;
 
         answerSection.classList.remove("hidden");
 
