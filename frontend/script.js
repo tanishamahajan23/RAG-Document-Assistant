@@ -127,10 +127,12 @@ uploadButton.addEventListener("click", async (event)=>{
         documentInput.disabled = false;
         removeFile.disabled = false; 
 
+        console.log("Document processed successfully.");
 
 const result = await response.json();
 
 updateStatus("Document ready.");
+console.log("Document ready for questions.");
 
 questionSection.classList.remove("hidden");
 
@@ -149,7 +151,8 @@ questionSection.classList.remove("hidden");
 
 })
 
-questionForm.addEventListener("submit", async (event) => {
+askButton.addEventListener("click", async (event) => {
+    console.log("Ask button clicked");
 
     event.preventDefault();
 
@@ -171,11 +174,12 @@ questionForm.addEventListener("submit", async (event) => {
 
     askButton.disabled = false;
 
-    return;
+    // return;
 
    }
 
     try {
+        console.log("Sending question:", question);
 
         const response = await fetch("http://localhost:5000/ask", {
 
@@ -195,17 +199,25 @@ questionForm.addEventListener("submit", async (event) => {
 
         });
 
+        console.log("Response status:", response.status);
+
+    
         if (!response.ok) {
 
             throw new Error("Unable to generate answer.");
 
         }
+
         documentInput.disabled = false;
         removeFile.disabled = false;
 
+        console.log("Response received:", response);
         const data = await response.json();
+        console.log("Data received:", data);
 
-        answerBox.textContent = data.answer;
+        console.log("Answer received:", data.answer);
+
+        answerBox.value = data.answer;
 
         answerSection.classList.remove("hidden");
 

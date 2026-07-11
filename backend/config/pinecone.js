@@ -1,8 +1,4 @@
 import { Pinecone } from "@pinecone-database/pinecone";
-import crypto from "crypto";
-
-console.log("Top level:", process.env.PINECONE_API_KEY);
-
 
 async function storeVectors(embeddings, documents,filename) {
 
@@ -14,9 +10,11 @@ async function storeVectors(embeddings, documents,filename) {
 
 const index = pinecone.index(process.env.PINECONE_INDEX_NAME);
 
+await index.deleteAll();
+
    const vectors = documents.map((document, index) => ({
 
-    id: crypto.randomUUID(),
+    id: `${filename}-${index + 1}`,
 
     values: embeddings[index],
 

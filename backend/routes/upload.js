@@ -56,8 +56,6 @@ router.post(
                 message: "Document uploaded successfully."
 
             });
-
-            console.log("Document uploaded successfully.");
         }
 
         catch (error) {
