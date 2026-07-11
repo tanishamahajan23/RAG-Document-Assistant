@@ -23,9 +23,9 @@ app.listen(PORT, () => {
 
 });
 
-// app.post("/upload",(req,res)=>{
+app.get("/",(req,res)=>{
 
-//     res.send({ message: "Upload endpoint" }); 
-//     console.log("Upload endpoint hit");
+    res.send({ message: "Upload endpoint" }); 
+    console.log("Upload endpoint hit");
 
-// });
+});
